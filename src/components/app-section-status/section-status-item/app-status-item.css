@@ -1,0 +1,37 @@
+.item-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #cccccc;
+    padding: 25px 15px;
+
+    & + .item-wrapper {
+        margin-top: 15px;
+    }
+
+    .icon-wrapper {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+    }
+
+    .btn {
+        all: unset;
+        background-color: transparent;
+        padding: 5px;
+        
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    .btn-star {
+        color: gold;
+    }
+    .btn-trash {
+        color: lime;
+    }
+    .btn-hard:hover {
+        color: red;
+        transition: 0.4s;
+    }
+}

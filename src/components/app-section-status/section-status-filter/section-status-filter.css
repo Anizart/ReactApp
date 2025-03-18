@@ -1,0 +1,44 @@
+* {
+    box-sizing: border-box;
+}
+
+.form {
+    display: flex;
+    gap: 3.5px;
+    margin-top: 20px;
+
+    .input {
+        width: 100%;
+        padding: 8px;
+    }
+
+    .btn-wrapper {
+        min-width: fit-content;
+    }
+
+    .btn {
+        border: none;
+        border-radius: 2px;
+        padding: 8px 10px;
+        
+        color: #fff;
+        font-size: 14px;
+        cursor: pointer;
+    }
+    
+    .btn-all {
+        background-color: #50a8b6;
+        transition: 0.3s;
+        &:hover {
+            background-color: #50b3c2;
+        }
+    }
+    .btn-like {
+        background-color: transparent;
+        border: 1px solid #fff;
+        transition: 0.3s;
+        &:hover {
+            background-color: #ffffff2d;
+        }
+    }
+}
