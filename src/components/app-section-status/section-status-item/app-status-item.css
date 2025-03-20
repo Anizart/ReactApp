@@ -1,37 +1,64 @@
-.item-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: 1px solid #cccccc;
-    padding: 25px 15px;
-
-    & + .item-wrapper {
+.item {
+    list-style: none;
+    
+    & + .item {
         margin-top: 15px;
     }
 
-    .icon-wrapper {
+    .item-wrapper {
         display: flex;
         justify-content: space-between;
-        gap: 15px;
-    }
-
-    .btn {
-        all: unset;
-        background-color: transparent;
-        padding: 5px;
+        align-items: center;
+        border: 1px solid #cccccc;
+        padding: 25px 15px;
         
-        font-size: 20px;
-        cursor: pointer;
-    }
-
-    .btn-star {
-        color: gold;
-    }
-    .btn-trash {
-        color: lime;
-    }
-    .btn-hard:hover {
-        color: red;
         transition: 0.4s;
+    
+        .icon-wrapper {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+    
+        .btn {
+            all: unset;
+            background-color: transparent;
+            padding: 5px;
+            
+            font-size: 20px;
+            cursor: pointer;
+        }
+    
+        .btn-star {
+            color: gold;
+            transition: 0.4s;
+        }
+        .btn-trash {
+            color: lime;
+        }
+        .btn-hard {
+            color: #cccccc;
+            
+            &:hover {
+                color: red;
+                transition: 0.4s;
+            }
+        }
+    
+        &.important {
+            color: gold;
+            transition: 0.4s;
+        
+            .btn-star {
+                color: rgba(95, 85, 29, 0.582);
+                transition: 0.4s;
+            }
+        }
+        &.like {
+            .btn-hard {
+                color: red;
+                transition: 0.4s;
+            }
+        }
     }
 }

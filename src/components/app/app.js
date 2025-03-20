@@ -22,9 +22,16 @@ export const Container = styled.div`
 `;
 
 const App = () => {
+
+    const data = [
+        {label: 'Hello World!', important: true, id: 1},
+        {label: 'Hello World!', important: true, id: 2},
+        {label: 'Hello World!', important: true, id: 3},
+    ];
+
     return (
         <AppStyle>
-            <AppSectionStatus />
+            <AppSectionStatus posts={data}/>
         </AppStyle>
     )
 }

@@ -7,13 +7,13 @@ import SectionStatusAdd from './section-status-add';
 
 import {Container} from '../app';
 
-const AppSectionStatus = () => {
+const AppSectionStatus = ({posts}) => {    
     return (
         <section className="app-section-status">
             <Container>
                 <SectionStatusHeader />
                 <SectionStatusFilter />
-                <AppStatusContent />
+                <AppStatusContent posts={posts}/>
                 <SectionStatusAdd />
             </Container>
         </section>

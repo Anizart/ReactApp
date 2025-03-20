@@ -4,12 +4,20 @@ import './app-status-content.css';
 
 import AppStatusItem from '../section-status-item';
 
-const AppStatusContent = () => {
+const AppStatusContent = ({posts}) => {
+
+    const elements = posts.map(item => {
+        const {id, ...itemProps} = item;
+        return (
+            <li key={id} className="item">
+                <AppStatusItem {...itemProps} />
+            </li>
+        )
+    });
+
     return (
         <ul className="status">
-            <AppStatusItem />
-            <AppStatusItem />
-            <AppStatusItem />
+            {elements}
         </ul>
     )
 }
