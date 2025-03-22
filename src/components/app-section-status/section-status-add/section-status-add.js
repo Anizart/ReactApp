@@ -1,8 +1,8 @@
 import React from "react";
 
-const SectionStatusAdd = () => {
+const SectionStatusAdd = ({onAdd}) => {
     return (
-        <form className="form">
+        <div className="form">
             <input
                 className="input"
                 type="text"
@@ -13,9 +13,10 @@ const SectionStatusAdd = () => {
                 <button
                     className="btn btn-like"
                     tabIndex={5}
+                    onClick={() => onAdd('Hello')}
                 >Добавить</button>
             </div>
-        </form>
+        </div>
     )
 }
 

@@ -21,7 +21,7 @@ export default class AppStatusItem extends Component {
     }
 
     render = () => {
-        const {label} = this.props,
+        const {label, onDelete} = this.props, // через него ( onDelete ) прокидывается выше, то есть...
               {important, like} = this.state;
 
         let classNames = 'item-wrapper';
@@ -41,7 +41,10 @@ export default class AppStatusItem extends Component {
                         className="btn btn-star"
                         onClick={this.onImportant}
                     >&#9733;</button>
-                    <button className="btn btn-trash">&#128465;</button>
+                    <button
+                        className="btn btn-trash"
+                        onClick={onDelete} // сюда кликнули, и он передаёт 'на меня нажали'
+                    >&#128465;</button>
                     <button
                         className="btn btn-hard"
                         onClick={this.onLike}
