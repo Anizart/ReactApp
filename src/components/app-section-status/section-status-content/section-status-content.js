@@ -4,7 +4,7 @@ import './app-status-content.css';
 
 import AppStatusItem from '../section-status-item';
 
-const AppStatusContent = ({posts, onDelete}) => { // ... передаётся сюда с id
+const AppStatusContent = ({posts, onDelete, onToggleImportant, onToggleLiked}) => { // ... передаётся сюда с id
 
     const elements = posts.map(item => {
         const {id, ...itemProps} = item;
@@ -13,6 +13,8 @@ const AppStatusContent = ({posts, onDelete}) => { // ... передаётся с
                 <AppStatusItem
                     {...itemProps}
                     onDelete={() => onDelete(id)} // ... сюда в этот onDelete поэтому запускается фун-я и собирает id...
+                    onToggleImportant={() => onToggleImportant(id)}
+                    onToggleLiked={() => onToggleLiked(id)}
                 />
             </li>
         )

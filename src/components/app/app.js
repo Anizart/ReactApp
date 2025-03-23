@@ -24,10 +24,12 @@ export const Container = styled.div`
 export default class App extends Component {
     state = {
         data: [
-            {label: 'Hello World!', important: true, id: 1}, // элемент массива data
-            {label: 'React App', important: true, id: 2},
-            {label: 'Hy! My neme\'s...', important: true, id: 3},
-        ]
+            {label: 'Hello World!', important: true, like: false, id: 1}, // элемент массива data
+            {label: 'React App', important: false, like: false, id: 2},
+            {label: 'Hy! My neme\'s...', important: false, like: false, id: 3},
+        ],
+        term: '',
+        filter: 'all'
     }
 
     maxId = 4; // ????? свойство
@@ -63,14 +65,85 @@ export default class App extends Component {
         });
     }
 
+    onToggleImportant = (id) => {
+        this.setState(({data}) => {
+            const index = data.findIndex(elem => elem.id === id);
+
+            const old = data[index];
+            const newItem = {...old, important: !old.important};
+            
+            const newArr = [...data.slice(0, index), newItem, ...data.slice(index + 1)];
+
+            return {
+                data: newArr
+            }
+        });
+    }
+
+    onToggleLiked = (id) => {
+        this.setState(({data}) => {
+            const index = data.findIndex(elem => elem.id === id);
+
+            const old = data[index];
+            const newItem = {...old, like: !old.like}; // Когда я указываю like: !old.like после разворота, то он ( like... ) перезапишет like в old
+            
+            const newArr = [...data.slice(0, index), newItem, ...data.slice(index + 1)];
+
+            return {
+                data: newArr
+            }
+        });
+    }
+
+    searchPost = (items, term) => {
+        if (term.length === 0) {
+            return items;
+        }
+
+        return items.filter(item => {
+            return item.label.indexOf(term) > -1;
+        });
+    }
+
+    filterPost = (items, filter) => {
+        if (filter === 'like') {
+            return items.filter(item => item.like);
+        } else {
+            return items
+        }
+    }
+
+    onUpdatSearch = (term) => {
+        this.setState({term});
+    }
+
+    onFilterSelect = (filter) => {
+        this.setState({filter});
+    }
+
     render = () => {
-        const {data} = this.state;
+        const {data, term, filter} = this.state;
+
+        const liked = data.filter(item => item.like).length; // Прохожусь по всем элементам like ( item.like ) и если оно true, то я его возращаю ( получаю )
+        const allPosts = data.length;
+
+        const visiblePosts = this.filterPost(this.searchPost(data, term), filter);
+
         return (
             <AppStyle>
                 <AppSectionStatus
-                    posts={data}
+                    liked={liked}
+                    allPosts={allPosts}
+
+                    onUpdatSearch={this.onUpdatSearch}
+                    filter={filter}
+                    onFilterSelect={this.onFilterSelect}
+
+                    posts={visiblePosts}
                     onDelete={this.deleteItem} // ...сюда. Тут происходит вызов фун-ии, поэтому id передаётся...
                     onAdd={this.addItem}
+                    onToggleImportant={this.onToggleImportant}
+                    onToggleLiked={this.onToggleLiked}
                 />
             </AppStyle>
         )

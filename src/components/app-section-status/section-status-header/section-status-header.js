@@ -2,18 +2,18 @@ import React from "react";
 
 import './section-status-header.css';
 
-const SectionStatusHeader = () => {
+const SectionStatusHeader = ({allPosts, liked}) => {
     return (
         <div className="section-wrapper">
             <div className="user-wrapper">
                 <div className="user-img"></div>
-                <div className="user-name">
+                <h1 className="user-name">
                     Vlad
-                </div>
+                </h1>
             </div>
-            <div className="records">
-                3 записи, из них 0 понравилось
-            </div>
+            <h2 className="records">
+                {allPosts} записи, из них {liked} понравилось
+            </h2>
         </div>
     )
 }

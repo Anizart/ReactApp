@@ -3,26 +3,8 @@ import React, { Component } from "react";
 import './app-status-item.css';
 
 export default class AppStatusItem extends Component {
-    state = {
-        important: false,
-        like: false
-    }
-
-    onImportant = () => {
-        this.setState(({important}) => ({
-            important: !important
-        }));
-    }
-
-    onLike = () => {
-        this.setState(({like}) => ({
-            like: !like
-        }));
-    }
-
     render = () => {
-        const {label, onDelete} = this.props, // через него ( onDelete ) прокидывается выше, то есть...
-              {important, like} = this.state;
+        const {label, onDelete, onToggleImportant, onToggleLiked, important, like} = this.props; // через него ( onDelete ) прокидывается выше, то есть...
 
         let classNames = 'item-wrapper';
         if (important) {
@@ -39,7 +21,7 @@ export default class AppStatusItem extends Component {
                 <div className="icon-wrapper">
                     <button
                         className="btn btn-star"
-                        onClick={this.onImportant}
+                        onClick={onToggleImportant}
                     >&#9733;</button>
                     <button
                         className="btn btn-trash"
@@ -47,7 +29,7 @@ export default class AppStatusItem extends Component {
                     >&#128465;</button>
                     <button
                         className="btn btn-hard"
-                        onClick={this.onLike}
+                        onClick={onToggleLiked}
                     >&#10084;</button>
                 </div>
             </div>
